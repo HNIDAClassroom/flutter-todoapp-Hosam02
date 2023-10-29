@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
+import '../models/task.dart';
 
 class NewTask extends StatefulWidget {
-  const NewTask({Key? key}) : super(key: key);
+  const NewTask({super.key, required this.onAddTask});
+
+  final void Function(Task task) onAddTask;
 
   @override
-  _NewTaskState createState() => _NewTaskState();
+  State<NewTask> createState() {
+    return _NewTaskState();
+  }
 }
 
 class _NewTaskState extends State<NewTask> {
   final _titleController = TextEditingController();
-
+  final _descriptionController = TextEditingController();
+  Category _selectedCategory = Category.personal;
   @override
   void dispose() {
     _titleController.dispose();
     super.dispose();
   }
+
   void _submitTaskData() {
-    
-    if (_titleController.text.trim().isEmpty) {
+    if ((_titleController.text.trim().isEmpty) ||
+        (_descriptionController.text.trim().isEmpty)) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
@@ -36,8 +43,12 @@ class _NewTaskState extends State<NewTask> {
       );
       return;
     }
-   }
-
+    widget.onAddTask(Task(
+        title: _titleController.text,
+        description: _descriptionController.text,
+        date: DateTime(2023, 10, 16, 14, 30),
+        category: _selectedCategory));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +63,42 @@ class _NewTaskState extends State<NewTask> {
               labelText: 'Task title',
             ),
           ),
+          TextField(
+            controller: _descriptionController,
+            maxLength: 50,
+            decoration: InputDecoration(
+              labelText: 'Task title',
+            ),
+          ),
           Row(
             children: [
+              DropdownButton<Category>(
+                value: _selectedCategory,
+                style: TextStyle(color: Color.fromARGB(255, 12, 12, 12)),
+                items: Category.values
+                    .map((category) => DropdownMenuItem<Category>(
+                          value: category,
+                          child: Text(
+                            category.name
+                                .toUpperCase(), // Remplacez cette couleur par celle que vous souhaitez
+                          ),
+                        ))
+                    .toList(),
+                onChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },
+              ),
               ElevatedButton(
-                onPressed:_submitTaskData, 
-                
+                onPressed: () {
+                 _submitTaskData();
+                  print(_titleController.text);
+                },
                 child: const Text('Enregistrer'),
               ),
             ],
