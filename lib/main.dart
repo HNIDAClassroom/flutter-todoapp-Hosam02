@@ -1,9 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todolist_app/login.dart';
-import 'package:todolist_app/tasks.dart';
+import 'package:todolist_app/auth_verify.dart';
+import 'package:todolist_app/firebase_options.dart';
+import 'application.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
 
-void main() {
+options: DefaultFirebaseOptions.currentPlatform,
+
+);
   runApp(
     ChangeNotifierProvider<UserTheme>(
       create: (context) => UserTheme(), // Créez ici une instance de UserTheme
@@ -23,11 +30,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 143, 143, 193),
+        scaffoldBackgroundColor: Color.fromARGB(255, 249, 249, 250),
         appBarTheme: const AppBarTheme(elevation: 0),
         useMaterial3: true,
       ),
-      home: Login(),
+      home: AuthVerify(),
     );
   }
 }
