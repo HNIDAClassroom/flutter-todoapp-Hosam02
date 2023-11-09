@@ -1,0 +1,28 @@
+commit controle
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   android/app/build.gradle
+#	modified:   android/app/google-services.json
+#	modified:   ios/firebase_app_id_file.json
+#	modified:   lib/auth_verify.dart
+#	modified:   lib/firebase_options.dart
+#	modified:   lib/models/task.dart
+#	modified:   lib/tasks.dart
+#	modified:   lib/tasks_list.dart
+#	modified:   lib/widgets/new_task.dart
+#	modified:   lib/widgets/task_item.dart
+#	modified:   macos/Flutter/GeneratedPluginRegistrant.swift
+#	modified:   macos/firebase_app_id_file.json
+#	modified:   pubspec.lock
+#	modified:   pubspec.yaml
+#	modified:   windows/flutter/generated_plugin_registrant.cc
+#	modified:   windows/flutter/generated_plugins.cmake
+#
+# Untracked files:
+#	lib/services/
+#
