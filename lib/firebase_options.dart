@@ -44,37 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCfXJ-rK9TOPiY4cyfxVr9nwubsYrsrVRA',
-    appId: '1:734509898196:web:bccff1d728fe896e9dde41',
-    messagingSenderId: '734509898196',
-    projectId: 'taskapp-777c4',
-    authDomain: 'taskapp-777c4.firebaseapp.com',
-    storageBucket: 'taskapp-777c4.appspot.com',
+    apiKey: 'AIzaSyC8gVXo_PFm1W6fCFV1QKVHEbf1ip4-tPI',
+    appId: '1:1063410222826:web:ca9051ce564cf6ea157993',
+    messagingSenderId: '1063410222826',
+    projectId: 'taskapp-ba2d5',
+    authDomain: 'taskapp-ba2d5.firebaseapp.com',
+    storageBucket: 'taskapp-ba2d5.appspot.com',
+    measurementId: 'G-2B9WYDP52M',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDhOk-8u6wzUY7QvCKv3W2H6D5pVgcxW1Y',
-    appId: '1:734509898196:android:8a02c239e418ff189dde41',
-    messagingSenderId: '734509898196',
-    projectId: 'taskapp-777c4',
-    storageBucket: 'taskapp-777c4.appspot.com',
+    apiKey: 'AIzaSyANYABu_G3g2sX7QQVY3gLSxARduaehSLs',
+    appId: '1:1063410222826:android:d4c8454d3d0709ca157993',
+    messagingSenderId: '1063410222826',
+    projectId: 'taskapp-ba2d5',
+    storageBucket: 'taskapp-ba2d5.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBdLPPSh5OOPiVOvF01yJDr0Py-vxvEyR0',
-    appId: '1:734509898196:ios:8e06ba0c4fd67db99dde41',
-    messagingSenderId: '734509898196',
-    projectId: 'taskapp-777c4',
-    storageBucket: 'taskapp-777c4.appspot.com',
+    apiKey: 'AIzaSyBBq4M5qDlZ39sInSS10t6nz_NzlrMUC1s',
+    appId: '1:1063410222826:ios:cf4dd22846b64332157993',
+    messagingSenderId: '1063410222826',
+    projectId: 'taskapp-ba2d5',
+    storageBucket: 'taskapp-ba2d5.appspot.com',
+    iosClientId: '1063410222826-i0ah5toq9p8a7v657dteeu4lcbrtua0i.apps.googleusercontent.com',
     iosBundleId: 'com.example.todolistApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBdLPPSh5OOPiVOvF01yJDr0Py-vxvEyR0',
-    appId: '1:734509898196:ios:010d95d795eab6839dde41',
-    messagingSenderId: '734509898196',
-    projectId: 'taskapp-777c4',
-    storageBucket: 'taskapp-777c4.appspot.com',
+    apiKey: 'AIzaSyBBq4M5qDlZ39sInSS10t6nz_NzlrMUC1s',
+    appId: '1:1063410222826:ios:19553ee38836b67c157993',
+    messagingSenderId: '1063410222826',
+    projectId: 'taskapp-ba2d5',
+    storageBucket: 'taskapp-ba2d5.appspot.com',
+    iosClientId: '1063410222826-igso9dj4j8jf670c1fgspmhb3k8a7i2t.apps.googleusercontent.com',
     iosBundleId: 'com.example.todolistApp.RunnerTests',
   );
 }

@@ -1,12 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../models/task.dart';
 import 'package:intl/intl.dart';
-class TaskItem extends StatelessWidget {
-  const TaskItem(this.task,
-      {super.key}); // Remarquez que j'ai corrigé l'erreur de syntaxe ici.
+import '../services/firestore.dart';
 
+class TaskItem extends StatefulWidget {
   final Task task;
 
+  const TaskItem(this.task, {super.key});
+
+  @override
+  State<TaskItem> createState() => _TaskItemState();
+}
+
+class _TaskItemState extends State<TaskItem> {
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +26,28 @@ class TaskItem extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(Icons.add_task_rounded),
+                Checkbox(
+                  value: isChecked,
+                  onChanged: (value)  {
+                    setState(()  {
+                      isChecked = value!;
+                      // Update the isChecked value in the Task object.
+                      widget.task.isChecked = value;
+
+                      // Save the Task object to the database.
+                      FirestoreService().updateTask(widget.task);
+
+                    });
+                  },
+                ),
                 Flexible(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(task.title,
+                      Text(widget.task.title,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       SizedBox(height: 5),
-                      Text(task.description),
+                      Text(widget.task.description),
                     ],
                   ),
                 ),
@@ -35,13 +56,20 @@ class TaskItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Date: ${DateFormat('dd/MM/yyyy HH:mm').format(task.date)}',
+                      Text(
+                          'Date: ${DateFormat('dd/MM/yyyy HH:mm').format(widget.task.date)}',
                           textAlign: TextAlign.left),
                       SizedBox(height: 5),
-                      Text('Category:${task.category.name}',
+                      Text('Category:${widget.task.category.name}',
                           textAlign: TextAlign.left),
                     ],
                   ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    FirestoreService().deleteTaskByTitle(widget.task.title);
+                  },
+                  icon: Icon(Icons.delete),
                 ),
               ],
             ),

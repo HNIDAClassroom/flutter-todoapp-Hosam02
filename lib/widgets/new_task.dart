@@ -15,11 +15,20 @@ class NewTask extends StatefulWidget {
 class _NewTaskState extends State<NewTask> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
+  final _dateController = TextEditingController();
   Category _selectedCategory = Category.personal;
   @override
   void dispose() {
     _titleController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize the date controller with the current date.
+    _dateController.text = DateTime.now().toString();
   }
 
   void _submitTaskData() {
@@ -46,7 +55,7 @@ class _NewTaskState extends State<NewTask> {
     widget.onAddTask(Task(
         title: _titleController.text,
         description: _descriptionController.text,
-        date: DateTime(2023, 10, 16, 14, 30),
+        date: DateTime.parse(_dateController.text),
         category: _selectedCategory));
   }
 
@@ -67,8 +76,27 @@ class _NewTaskState extends State<NewTask> {
             controller: _descriptionController,
             maxLength: 50,
             decoration: InputDecoration(
-              labelText: 'Task title',
+              labelText: 'Task description',
             ),
+          ),
+          TextField(
+            controller: _dateController,
+            onTap: () async {
+              // Open the date picker.
+              DateTime? pickedDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2023),
+                lastDate: DateTime(2030),
+              );
+
+              // If the user selected a date, update the text field.
+              if (pickedDate != null) {
+                setState(() {
+                  _dateController.text = pickedDate.toString();
+                });
+              }
+            },
           ),
           Row(
             children: [
@@ -80,7 +108,7 @@ class _NewTaskState extends State<NewTask> {
                           value: category,
                           child: Text(
                             category.name
-                                .toUpperCase(), // Remplacez cette couleur par celle que vous souhaitez
+                                .toUpperCase(), 
                           ),
                         ))
                     .toList(),
@@ -96,7 +124,7 @@ class _NewTaskState extends State<NewTask> {
               ),
               ElevatedButton(
                 onPressed: () {
-                 _submitTaskData();
+                  _submitTaskData();
                   print(_titleController.text);
                 },
                 child: const Text('Enregistrer'),

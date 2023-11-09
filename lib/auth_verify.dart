@@ -16,7 +16,7 @@ class AuthVerify extends StatelessWidget {
           return SignInScreen(
             providers: [
               EmailAuthProvider(),
-              GoogleProvider(clientId: "734509898196-qi5qbfkrkde4vhms5achrbh37f13hcji.apps.googleusercontent.com"),
+              GoogleProvider(clientId: "1063410222826-c2m3ta9uduk28elth8veqeusdlg2j2sp.apps.googleusercontent.com"),
             ],
             
            subtitleBuilder: (context, action) {

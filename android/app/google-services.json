@@ -1,26 +1,79 @@
 {
   "project_info": {
-    "project_number": "734509898196",
-    "project_id": "taskapp-777c4",
-    "storage_bucket": "taskapp-777c4.appspot.com"
+    "project_number": "1063410222826",
+    "project_id": "taskapp-ba2d5",
+    "storage_bucket": "taskapp-ba2d5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:734509898196:android:8a02c239e418ff189dde41",
+        "mobilesdk_app_id": "1:1063410222826:android:d4c8454d3d0709ca157993",
         "android_client_info": {
           "package_name": "com.example.todolist_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1063410222826-c2m3ta9uduk28elth8veqeusdlg2j2sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDhOk-8u6wzUY7QvCKv3W2H6D5pVgcxW1Y"
+          "current_key": "AIzaSyANYABu_G3g2sX7QQVY3gLSxARduaehSLs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063410222826-c2m3ta9uduk28elth8veqeusdlg2j2sp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1063410222826-hccvlovncg3avv38viek0dqtigl3c1ol.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tp2.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063410222826:android:bda615c2780abc54157993",
+        "android_client_info": {
+          "package_name": "com.example.tp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063410222826-c2m3ta9uduk28elth8veqeusdlg2j2sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANYABu_G3g2sX7QQVY3gLSxARduaehSLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063410222826-c2m3ta9uduk28elth8veqeusdlg2j2sp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1063410222826-hccvlovncg3avv38viek0dqtigl3c1ol.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tp2.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist_app/models/task.dart';
+import 'package:todolist_app/services/firestore.dart';
 import 'package:todolist_app/widgets/new_task.dart';
 
 import 'tasks_list.dart';
@@ -14,27 +15,9 @@ class Tasks extends StatefulWidget {
 }
 
 class _TasksState extends State<Tasks> {
-  final List<Task> _registeredTasks = [
-    Task(
-      title: 'Apprendre Flutter',
-      description: 'Suivre le cours pour apprendre de nouvelles compétences',
-      date: DateTime.now(),
-      category: Category.work,
-    ),
-    Task(
-      title: 'Faire les courses',
-      description: 'Acheter des provisions pour la semaine',
-      date: DateTime.now().subtract(Duration(days: 1)),
-      category: Category.shopping,
-    ),
-    Task(
-      title: 'Rediger un CR',
-      description: '',
-      date: DateTime.now().subtract(Duration(days: 2)),
-      category: Category.personal,
-    ),
-    // Add more tasks with descriptions as needed
-  ];
+  final FirestoreService firestoreService = FirestoreService();
+  List<Task> _registeredTasks = [];
+
   void _openAddTaskOverlay() {
     showModalBottomSheet(
       context: context,
@@ -42,12 +25,26 @@ class _TasksState extends State<Tasks> {
     );
   }
 
-  Future<void> _addTask(Task task) async {
-    await Future.delayed(Duration(seconds: 2));
 
+  void _addTask(Task task) {
     setState(() {
       _registeredTasks.add(task);
+      firestoreService.addTask(task);
+      Navigator.pop(context);
     });
+  }
+
+  Future<List<Task>> _fetchTasks() async {
+    List<Task> tasks = (await firestoreService.getTasks()) as List<Task>;
+    setState(() {
+    _registeredTasks = tasks;
+  });
+    return tasks;}
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchTasks();
   }
 
   @override
@@ -61,13 +58,14 @@ class _TasksState extends State<Tasks> {
               icon: Ink(
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Colors.grey),
-                  child: Padding(
+                  child: const Padding(
                     padding: EdgeInsets.all(10),
                     child: Icon(Icons.add),
                   ))),
+        
         ],
       ),
-      body: TasksList(tasks: _registeredTasks),
+    body: TasksList(tasks: _registeredTasks ),
     );
   }
 }
